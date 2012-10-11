@@ -1,0 +1,25 @@
+body 
+{
+    width: auto;
+    margin: 0px;
+    background:#fff;
+    color: #222;
+    font: normal Arial, Helvetica, sans-serif;
+    font:13px;
+}
+
+#container header {
+    border-bottom: 1px solid #CACACA;
+    left: 0;
+    position: fixed;
+    background-color: #CACACA;
+    height:24px;
+    text-align: left; 
+    top: 0;
+    width: 100%;
+    z-index: 200;
+}
+#container header:hover 
+{
+    color: #000;
+}
