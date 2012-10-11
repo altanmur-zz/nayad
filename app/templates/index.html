@@ -1,0 +1,23 @@
+{% block title %}
+    Index
+{% endblock %}
+
+
+
+{% block main %}
+<h1>Hello</h1>
+
+<table width="100%">
+    <tr>
+        <td align="right">
+            {% if user %}
+                {{ user.nickname() }}, {{ user.email() }}, {{ user.user_id() }}
+                <a href="{{ logout_url }}">logout</a>
+            {% else %}
+                <a href="{{ login_url }}">login</a>
+            {% endif %}
+        </td>
+    </tr>
+</table>
+
+{% endblock %}
