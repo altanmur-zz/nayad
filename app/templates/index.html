@@ -1,10 +1,32 @@
 {% extends 'base.html' %}
 
+
+{% block js %}
+
+<script type="text/javascript">
+<!--
+    profile = function(){
+        $.colorbox({
+            href: "{{ url_for('views.user_profile') }}",
+            width: "50%",
+            height: "50%",
+            oncleanup: function(){
+            
+            }
+        })
+    }
+-->
+</script>
+
+{% endblock %}
+
 {% block header %}
 
 <div align="right">
     {% if user %}
-        Сайн уу, {{ user.nickname() }} <a href="{{ logout_url }}">logout</a>
+        Hello, {{ user.nickname() }} 
+        <a href="javascript:;" onclick="profile();">profile</a>    
+        <a href="{{ logout_url }}">logout</a>
     {% else %}
         <a href="{{ login_url }}">login</a>
     {% endif %}
@@ -19,6 +41,4 @@
     {% endif %}
     
 {% endblock %}
-
-
 

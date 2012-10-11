@@ -1,0 +1,53 @@
+<div>
+    <div id="tools">
+        <a href="javascript:;" onclick="edit();">edit</a>
+    </div>
+    <div id="info">
+        <table width="100%" border="1">
+            <tr>
+                <td rowspan="5">
+                    <img scr="{{ gravatar_url }}" alt="gravatar"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Display name
+                </td>
+                <td>
+                    {{ user.nickname() }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Real name
+                </td>
+                <td>
+                    {{ user.nickname() }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    GDG point
+                </td>
+                <td>
+                    {{ user.email() }}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    About me
+                </td>
+                <td>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+<!--    
+    edit = function(){
+        alert("Hi");
+    }
+-->    
+</script>

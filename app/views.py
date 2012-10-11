@@ -10,6 +10,7 @@ from google.appengine.api import users
 from flask import Blueprint, url_for, render_template, request, redirect
 from models import Todo
 from forms import TodoForm, EmailForm
+import urllib, hashlib
 
 views = Blueprint('views', __name__)
 
@@ -27,6 +28,15 @@ def index():
         login_url = users.create_login_url("/")
     return render_template('index.html', login_url=login_url, user=user, logout_url=logout_url)
 
+@views.route('/user_profile', methods=['GET'])
+def user_profile():
+    user = users.get_current_user()
+    email = user.email().lower()
+    default = "..."
+    gravatar_url = "http://www.gravatar.com/avatar"
+    gravatar_url += urllib.urlencode({'gravatar_id':hashlib.md5(email).hexdigest(), 
+        'default':default, 'size':"64"})
+    return render_template('user/profile.html', user=user, gravatar_url=gravatar_url)
 
 @views.after_request
 def add_header(response):
