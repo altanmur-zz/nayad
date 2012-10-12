@@ -18,10 +18,9 @@ views = Blueprint('views', __name__)
 @views.route('/')
 def index():
     """Render website's index page."""
-    
     user = users.get_current_user()
     logout_url, login_url = None, None
-    
+
     if user:
         logout_url = users.create_logout_url("/")
     else:
@@ -32,10 +31,8 @@ def index():
 def user_profile():
     user = users.get_current_user()
     email = user.email().lower()
-    default = "..."
-    gravatar_url = "http://www.gravatar.com/avatar"
-    gravatar_url += urllib.urlencode({'gravatar_id':hashlib.md5(email).hexdigest(), 
-        'default':default, 'size':"64"})
+    gravatar_url = "http://www.gravatar.com/avatar/%s?d=retro&s=64" % hashlib.md5(email).hexdigest()
+
     return render_template('user/profile.html', user=user, gravatar_url=gravatar_url)
 
 @views.after_request
